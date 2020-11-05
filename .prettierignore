@@ -1,0 +1,4 @@
+*.sql
+README.md
+build/
+node_modules/
