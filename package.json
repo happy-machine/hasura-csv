@@ -1,0 +1,11 @@
+{
+  "name": "hasura-csv",
+  "version": "0.0.1",
+  "description": "Utility to transform action output to csv files",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "author": "happy-machine",
+  "license": "ISC"
+}

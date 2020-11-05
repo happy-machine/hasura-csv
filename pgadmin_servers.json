@@ -1,0 +1,14 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "funphyl",
+      "Group": "Servers",
+      "Host": "gbjhvice075.eame.syngenta.org",
+      "Port": 2010,
+      "MaintenanceDB": "funphyl",
+      "Username": "greenphyl",
+      "Password": "hades2000",
+      "SSLMode": "prefer"
+    }
+  }
+}
