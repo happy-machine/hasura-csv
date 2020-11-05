@@ -1,12 +1,12 @@
 # hasura-csv
 
-###Setting up the API:
+### Setting up the API:
 
 >cp ./etc/.example-env ./etc/.env   
 
-then set secrets and paths in .env before running.
+then set secrets and paths in .env before running.   
 
-###Script commands:
+### Script commands:
 
 **npm start**   
 **npm test** run tests   
