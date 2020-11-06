@@ -32,20 +32,20 @@ services:
     logging:
       driver: none
 
-  csv-writer:
-    container_name: csv-writer
-    build: .
-    ports:
-      - "5000:5000"
-    volumes:
-      - .:/usr/src/app
-      - ./node_modules:/usr/src/app/node_modules
-    env_file:
-      - ./src/etc/.env
-    depends_on:
-      - hasura
-    networks:
-      network:
+  # csv-writer:
+  #   container_name: csv-writer
+  #   build: .
+  #   ports:
+  #     - "5000:5000"
+  #   volumes:
+  #     - .:/usr/src/app
+  #     - ./node_modules:/usr/src/app/node_modules
+  #   env_file:
+  #     - ./src/etc/.env
+  #   depends_on:
+  #     - hasura
+  #   networks:
+  #     network:
 
 networks:
   network:

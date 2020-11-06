@@ -3,8 +3,9 @@ import fs from "fs";
 const fsPromises = fs.promises;
 import { OUTPUT_DIR } from "../config/config";
 import logger from "../config/winston";
+let currentTimeStamp;
 
-export const csvWriter = async (filename, keys) => {
+export const csvWriter = async (filename, keys, timestamp) => {
   const path = `${OUTPUT_DIR}${filename}`;
   try {
     await fsPromises.writeFile(path, "", { flag: "wx" });
@@ -16,8 +17,12 @@ export const csvWriter = async (filename, keys) => {
       logger.info(`'${path}' written. with columns: ${keys}`);
     }
   }
-  return createObjectCsvWriter({
+  console.log({keys})
+  const out =  createObjectCsvWriter({
     path,
     header: keys.map((key) => ({ id: key, title: key })),
+    append: currentTimeStamp == timestamp ? true : false
   });
+  currentTimeStamp = timestamp;
+  return out
 };
