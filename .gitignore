@@ -6,6 +6,5 @@ node_modules/
 builds/
 build/
 cache/
-output/
 *.swp
 .DS_Store
