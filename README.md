@@ -36,7 +36,6 @@ Typescript is not yet doing much
 **npm start**   
 **npm test** run tests   
 **npm run build** build only   
-**npm run test-watch** run tests with nodemon hot reloading   
 **npm run prettier** prettier code formatting   
 **npm run lint** run linter   
 **npm run lint-ts** run linter on typescript   
