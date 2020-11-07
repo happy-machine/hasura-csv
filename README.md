@@ -29,7 +29,7 @@ Name the field you will use to insert the hasura-csv link (CSV is a good idea!),
 To output the results of a query just create your query as you would normally, lets say we create a person query here. In the top level of the resolver add the CSV field you just created. The filtered results of the query will be exported via the columns you just selected in the remote schema relationships.
 
 #### TBD:
-Typescript definitions!
+Typescript is not yet doing much
 
 #### Script commands:
 
