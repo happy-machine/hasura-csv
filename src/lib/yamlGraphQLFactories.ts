@@ -1,7 +1,6 @@
 import yaml from "js-yaml";
 import fs from "fs";
 import logger from "../config/winston";
-import { csvWriter } from "../service/csv";
 import {
   GraphQLInt,
   GraphQLFloat,
@@ -46,12 +45,14 @@ export const graphQLFieldFactory = () => {
           ),
           async resolve(_, args, context, info) {
             try {
-              const writer = await csvWriter(
-                `${info.fieldName}_${context.timestamp}.csv`,
-                Object.keys(args),
-                context.timestamp
+              const graphQLResolver = await import(
+                `../graphql/resolvers/${resolver.resolver_target}.ts`
               );
-              await writer.writeRecords([args]);
+              await graphQLResolver.default({
+                args,
+                context,
+                info,
+              });
               return { ...args, status: "done" };
             } catch (e) {
               logger.error(e);

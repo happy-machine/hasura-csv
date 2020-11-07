@@ -1,11 +1,13 @@
 resolvers:
   - name: Person
+    resolver_target: csv
     fields:
       - arg: address
         type: string
       - arg: name
         type: string
   - name: Giraffe
+    resolver_target: csv
     fields:
       - arg: neck_size
         type: integer

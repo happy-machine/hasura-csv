@@ -1,5 +1,5 @@
 import { GraphQLObjectType, GraphQLSchema } from "graphql";
-import { graphQLFieldFactory } from "../lib/yamlGraphQLGenerator";
+import { graphQLFieldFactory } from "../lib/yamlGraphQLFactories";
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",

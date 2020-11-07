@@ -6,6 +6,10 @@ import logger from "../config/winston";
 let currentTimeStamp;
 
 export const csvWriter = async (filename, keys, timestamp) => {
+  /**
+   * Use the timestamp from the request to chose filename to use
+   ***/
+
   const path = `${OUTPUT_DIR}${filename}`;
   try {
     await fsPromises.writeFile(path, "", { flag: "wx" });

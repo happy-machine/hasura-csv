@@ -1,11 +1,13 @@
 resolvers:
   - name: family_csv
+    resolver_target: csv
     fields:
       - arg: level
         type: integer
       - arg: name
         type: string
   - name: taxon_csv
+    resolver_target: csv
     fields:
       - arg: scientific_name
         type: string
