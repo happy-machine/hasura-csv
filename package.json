@@ -25,6 +25,7 @@
     "fluent-logger": "^3.4.1",
     "fs": "0.0.1-security",
     "graphql": "^15.4.0",
+    "js-yaml": "^3.14.0",
     "nodemon": "^2.0.6",
     "ts-node": "^9.0.0",
     "winston": "^3.3.3"

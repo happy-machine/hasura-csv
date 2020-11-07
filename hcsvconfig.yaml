@@ -1,0 +1,13 @@
+resolvers:
+  - name: family_csv
+    fields:
+      - arg: level
+        type: integer
+      - arg: name
+        type: string
+  - name: taxon_csv
+    fields:
+      - arg: scientific_name
+        type: string
+      - arg: rank
+        type: string
