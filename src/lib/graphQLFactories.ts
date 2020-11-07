@@ -1,5 +1,3 @@
-import yaml from "js-yaml";
-import fs from "fs";
 import logger from "../config/winston";
 import {
   GraphQLInt,
@@ -8,8 +6,6 @@ import {
   GraphQLString,
   GraphQLObjectType,
 } from "graphql";
-
-const doc = yaml.safeLoad(fs.readFileSync("./hcsvconfig.yaml", "utf8"));
 
 const types = {
   string: GraphQLString,
@@ -29,7 +25,7 @@ export const graphQLTypeFactory = (resolver) => {
   });
 };
 
-export const graphQLFieldFactory = () => {
+export const graphQLFieldFactory = (doc) => {
   try {
     const out = doc.resolvers.map((resolver) => {
       return {

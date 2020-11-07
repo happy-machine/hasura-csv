@@ -1,8 +1,9 @@
 import { createObjectCsvWriter } from "csv-writer";
-import fs from "fs";
-const fsPromises = fs.promises;
 import { OUTPUT_DIR } from "../config/config";
 import logger from "../config/winston";
+import fs from "fs";
+
+const fsPromises = fs.promises;
 let currentTimeStamp;
 
 export const csvWriter = async (filename, keys, timestamp) => {
