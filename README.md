@@ -1,4 +1,5 @@
 # Hasura-csv
+![Screenshot](screenshot.png)
 
 #### Setting up the API:
 
