@@ -27,6 +27,7 @@ Go back to hasura, to Data and select the person resolver in the left hand colum
 Name the field you will use to insert the hasura-csv link (CSV is a good idea!), select your remote schema which will be the details you just defined in the yaml file. Then select the mapping you want to map to (we would select person as we entered it as our mapping in the yaml file), now select the args you set up which will link the columns to the service via GraphQL args.
 
 To output the results of a query just create your query as you would normally, lets say we create a person query here. In the top level of the resolver add the CSV field you just created. The filtered results of the query will be exported via the columns you just selected in the remote schema relationships.
+CSVs are output to the output folder, the file name will be the resolver name plus time stamp.
 
 #### TBD:
 Typescript is not yet doing much
