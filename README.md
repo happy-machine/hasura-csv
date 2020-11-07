@@ -12,7 +12,7 @@ hasura-csv will allow the linking of predefined resolver fields which exist in t
 
 First identify a resolver and the fields you wish to be CSV columns, then go to the remote schemas section and add a new remote schema.
 
-give the uri of hasura-csv (if using docker on default settings this would be http://host.docker.internal:5000/graphql)
+give the uri of hasura-csv (by default this would be http://localhost:5000/graphql)
 
 Once the schema has been added it will be available to link to in the Data section.
 
