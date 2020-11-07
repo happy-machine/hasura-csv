@@ -1,5 +1,6 @@
 node_modules/
 .env
+.hcsvconfig.yaml
 /etc/.env
 /logs/
 .vscode/

@@ -1,0 +1,13 @@
+resolvers:
+  - name: Person
+    fields:
+      - arg: address
+        type: string
+      - arg: name
+        type: string
+  - name: Giraffe
+    fields:
+      - arg: neck_size
+        type: integer
+      - arg: eyeball_size
+        type: float

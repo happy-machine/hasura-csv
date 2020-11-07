@@ -2,7 +2,7 @@
 
 #### Setting up the API:
 
->cp ./etc/.example-env ./etc/.env   
+>cd ./etc/.example-env ./etc/.env   
 
 then set secrets and paths in .env before running.   
 
@@ -17,7 +17,7 @@ Once the schema has been added it will be available to link to in the Data secti
 
 Lets say we want to export the fields 'name' and 'address' from the person resolver:
 
-First edit the ./hcsvconfig.yaml file in the hasura-csv root. Create a resolver entry for each resolver you want to add a hasura-csv writer link to. Create an arg entry named after each column you wish to pull from the relevant hasura resolver and it's type (float, integer, string, or id)
+First copy the example file example.hcsvconfig.yaml to hcsvconfig.yaml and edit the ./hcsvconfig.yaml file in the hasura-csv root. Create a resolver entry for each resolver you want to add a hasura-csv writer link to. Create an arg entry named after each column you wish to pull from the relevant hasura resolver and it's type (float, integer, string, or id)
 
 run the service with **npm run start**
 
