@@ -1,5 +1,5 @@
 import { GraphQLObjectType, GraphQLSchema } from "graphql";
-import { graphQLFieldFactory } from "../lib/yamlGraphQLFactories";
+import { graphQLFieldFactory } from "../lib/graphQLFactories";
 import yaml from "js-yaml";
 import fs from "fs";
 
