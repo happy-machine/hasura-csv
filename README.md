@@ -1,7 +1,7 @@
 # Hasura-csv
 ![Screenshot](screenshot.png)
 
-** Make sure to use different names for the yaml defined remote resolvers to the actual resolvers you want to track. Ie. For a resolver like 'Person' 'person-csv' etc.**
+**Make sure to use different names for the yaml defined remote resolvers to the actual resolvers you want to track. Ie. For a resolver like 'Person' 'person-csv' etc.**
 
 #### Setting up the API:
 
