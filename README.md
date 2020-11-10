@@ -35,8 +35,6 @@ Typescript is not yet doing much
 #### Script commands:
 
 **npm start**   
-**npm test** run tests   
 **npm run build** build only   
 **npm run prettier** prettier code formatting   
 **npm run lint** run linter   
-**npm run lint-ts** run linter on typescript   
