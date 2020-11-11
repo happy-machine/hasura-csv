@@ -1,42 +1,101 @@
 # Hasura-csv
+![Logo](logo.png)
+
+### What is hasura-csv?
+
+One of the many ways to use Hasura is to allow power users to interact with an API through Hasura instead of a website designed primarily for visualising data. One often requested feature that was particularly useful for my team was the ability to download CSV data which a site might normally provide a browser interface for.
+
+This service will spin up a remote GraphQL schema from a yaml file which will allow the quick creation of custom field/s that can forward the results from a Hasura resolver to the hasura-csv service, where it will be written to the output folder as a csv file.
+
+#### How do i use it?
+
+Lets say that I have a Person resolver in my Hasura schema which looks like this
+
+**Person {**
+**&nbsp;&nbsp;&nbsp;name**
+**&nbsp;&nbsp;&nbsp;age**
+**&nbsp;&nbsp;&nbsp;address**
+**&nbsp;&nbsp;&nbsp;voted_for_biden?**
+**}**
+
+But im not interested in whether this person actually voted for Biden, or their real address as I only want their names and ages.
+
+First of all I create the following hcsvconfig.yaml (copy the example.hcsvconfig.yaml for a quick leg up). 
+
+I need to create a target resolver in my yaml which Hasura will connect to. **This must be a different name from the actual resolver we want to output from** (i use person_csv here for the Person resolver).
+
+
+&nbsp;&nbsp;&nbsp;resolvers:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\- name: person_csv
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resolver_target: csv
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fields:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- arg: name
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: string
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- arg: age
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: integer
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\- name: giraffe_csv
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resolver_target: csv
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fields:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- arg: eye_colour
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: string
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- arg: neck_length
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: float
+
+Here i've also added a seperate link for the giraffe resolver 🦒 add as many fields and resolver links as you like. Each remote resolver will correspond to one Hasura resolver.
+
+**npm install** and run the service with **npm run start**.
+
+- Go to your Hasura console and select **REMOTE SCHEMAS**. 
+- Enter the url of hasura-csv (by default this will be http://localhost:5000/graphql)
+- Name your remote schema (i generally use 'CSV')
+- Select the resolver you wish to output in the **DATA** tab and select **relationships** and **Add a remote schema relationship**
+
+Now name the field which you will want to use in the Person resolver to indicate you want to also send the output of the resolver to hasura-csvs person-csv, i use CSV (this can be the same for every table if you want)   
+
 ![Screenshot](screenshot.png)
 
-**Make sure to use different names for the yaml defined remote resolvers to the actual resolvers you want to track. Ie. For a resolver like 'Person' 'person-csv' etc.**
+Now to output to hasura-csv simply add the CSV field to the resolver you have linked it to in a UI query, for example:
 
-#### Setting up the API:
+**Person {**
+**&nbsp;&nbsp;&nbsp;name**
+**&nbsp;&nbsp;&nbsp;age**
+**&nbsp;&nbsp;&nbsp;address**
+**&nbsp;&nbsp;&nbsp;voted_for_biden?**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CSV&nbsp;&nbsp;&nbsp;{**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;age**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;status**
+**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}**
+**}**
 
->cd ./etc/.example-env ./etc/.env   
+now run your query!
 
-then set secrets and paths in .env before running.   
+*The subfields will only affect the display in Hasura, the linked fields only will be transmitted, status is the optional 'OK' response from the service.*
 
-#### How to use:
-hasura-csv will allow the linking of predefined resolver fields which exist in the hasura db (visible through the hasura UI).
+The output will be written to './output/person_csv_{{timestamp}}'
 
-First identify a resolver and the fields you wish to be CSV columns, then go to the remote schemas section and add a new remote schema.
 
-give the uri of hasura-csv (by default this would be http://localhost:5000/graphql)
+#### Setting up the API:   
+<br>
 
-Once the schema has been added it will be available to link to in the Data section.
+>cp ./etc/.example-env ./etc/.env   
+>cp ./example.hcsvconfig.yaml ./hcsvconfig.yaml
 
-Lets say we want to export the fields 'name' and 'address' from the person resolver:
-
-First copy the example file example.hcsvconfig.yaml to hcsvconfig.yaml and edit the ./hcsvconfig.yaml file in the hasura-csv root. Create a resolver entry for each resolver you want to add a hasura-csv writer link to. Create an arg entry named after each column you wish to pull from the relevant hasura resolver and it's type (float, integer, string, or id)
-
-run the service with **npm run start**
-
-Go back to hasura, to Data and select the person resolver in the left hand column, then select relationships / remote schema relationships / Add a remote schema relationship. 
-
-Name the field you will use to insert the hasura-csv link (CSV is a good idea!), select your remote schema which will be the details you just defined in the yaml file. Then select the mapping you want to map to (we would select person as we entered it as our mapping in the yaml file), now select the args you set up which will link the columns to the service via GraphQL args.
-
-To output the results of a query just create your query as you would normally, lets say we create a person query here. In the top level of the resolver add the CSV field you just created. The filtered results of the query will be exported via the columns you just selected in the remote schema relationships.
-CSVs are output to the output folder, the file name will be the resolver name plus time stamp.
+Then set secrets and paths in .env, and setup your yaml configuration before running.   
 
 #### TBD:
-Typescript is not yet doing much
+  
+
+- Typescript is not yet doing much. 
+
+
+- I have only tested this on a couple of thousand rows, please feel free to PR :pray:
+<br>
 
 #### Script commands:
 
-**npm start**   
+**npm start**
 **npm run build** build only   
 **npm run prettier** prettier code formatting   
 **npm run lint** run linter   
+**npm run lint-ts** run linter on typescript   
