@@ -11,12 +11,7 @@ This service will spin up a remote GraphQL schema from a yaml file which will al
 
 Lets say that I have a Person resolver in my Hasura schema which looks like this
 
-**Person {**
-**&nbsp;&nbsp;&nbsp;name**
-**&nbsp;&nbsp;&nbsp;age**
-**&nbsp;&nbsp;&nbsp;address**
-**&nbsp;&nbsp;&nbsp;voted_for_biden?**
-**}**
+![query1](query1.png)
 
 But im not interested in whether this person actually voted for Biden, or their real address as I only want their names and ages.
 
@@ -41,17 +36,7 @@ Now name the field which you will want to use in the Person resolver to indicate
 
 Now to output to hasura-csv simply add the CSV field to the resolver you have linked it to in a UI query, for example:
 
-**Person {**
-**&nbsp;&nbsp;&nbsp;name**
-**&nbsp;&nbsp;&nbsp;age**
-**&nbsp;&nbsp;&nbsp;address**
-**&nbsp;&nbsp;&nbsp;voted_for_biden?**
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CSV&nbsp;&nbsp;&nbsp;{**
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name**
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;age**
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;status**
-**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}**
-**}**
+![query2](query2.png)
 
 now run your query!
 
