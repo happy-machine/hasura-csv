@@ -42,7 +42,6 @@ Now to output to hasura-csv simply add the CSV field to the resolver you have li
 
 ![query2](./assets/query2.png)
 
-now run your query!
 
 *The subfields will only affect the display in Hasura, the linked fields only will be transmitted, status is the optional 'OK' response from the service.*
 
