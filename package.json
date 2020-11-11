@@ -1,11 +1,10 @@
 {
   "name": "hasura-csv",
   "version": "0.0.1",
-  "description": "Utility to transform action output to csv files",
+  "description": "Utility to transform hasura resolver output to csv files",
   "main": "build/server.js",
   "scripts": {
     "start": "MODE=local nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
-    "docker": "MODE=docker nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
     "build": "tsc",
     "test": "NODE_ENV=test PORT=5001 MODE=local mocha -r ts-node/register ./src/tests/*.ts --exit",
     "test-watch": "NODE_ENV=test PORT=5001 MODE=local mocha -r ts-node/register ./src/tests/*.ts --watch --watch-extensions ts --reporter min",
