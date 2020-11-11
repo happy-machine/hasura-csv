@@ -1,5 +1,5 @@
 # Hasura-csv
-![Logo](logo.png)
+![Logo](./assets/logo.png)
 
 ### What is hasura-csv?
 
@@ -11,7 +11,7 @@ This service will spin up a remote GraphQL schema from a yaml file which will al
 
 Lets say that I have a Person resolver in my Hasura schema which looks like this
 
-![query1](query1.png)
+![query1](./assets/query1.png)
 
 But im not interested in whether this person actually voted for Biden, or their real address as I only want their names and ages.
 
@@ -23,7 +23,7 @@ I need to create a target resolver in my yaml which Hasura will connect to.
 
 (i use person_csv here for the Person resolver).
 
-![YamlScreenshot](yamlScreenshot.png)
+![YamlScreenshot](./assets/yamlScreenshot.png)
 
 Here i've also added a seperate link for the giraffe resolver 🦒 add as many fields and resolver links as you like. Each remote resolver will correspond to one Hasura resolver.
 
@@ -36,11 +36,11 @@ Here i've also added a seperate link for the giraffe resolver 🦒 add as many f
 
 Now name the field which you will want to use in the Person resolver to indicate you want to also send the output of the resolver to hasura-csvs person-csv, i use CSV (this can be the same for every table if you want)   
 
-![Screenshot](screenshot.png)
+![Screenshot](./assets/screenshot.png)
 
 Now to output to hasura-csv simply add the CSV field to the resolver you have linked it to in a UI query, for example:
 
-![query2](query2.png)
+![query2](./assets/query2.png)
 
 now run your query!
 
