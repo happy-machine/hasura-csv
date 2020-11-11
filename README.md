@@ -17,7 +17,11 @@ But im not interested in whether this person actually voted for Biden, or their 
 
 First of all I create the following hcsvconfig.yaml (copy the example.hcsvconfig.yaml for a quick leg up). 
 
-I need to create a target resolver in my yaml which Hasura will connect to. **This must be a different name from the actual resolver we want to output from** (i use person_csv here for the Person resolver).
+I need to create a target resolver in my yaml which Hasura will connect to. 
+
+**!!!This must be a different name from the actual resolver we want to output from!!!** 
+
+(i use person_csv here for the Person resolver).
 
 ![YamlScreenshot](yamlScreenshot.png)
 
