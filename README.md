@@ -13,7 +13,7 @@ Lets say that I have a Person resolver in my Hasura schema which looks like this
 
 ![query1](./assets/query1.png)
 
-But im not interested in whether this person actually voted for Biden, or their real address as I only want their names and ages.
+But I only want their names and ages.
 
 First of all I create the following hcsvconfig.yaml (copy the example.hcsvconfig.yaml for a quick leg up). 
 
