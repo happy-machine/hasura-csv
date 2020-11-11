@@ -36,7 +36,7 @@ Here i've also added a seperate link for the giraffe resolver 🦒 add as many f
 
 Now name the field which you will want to use in the Person resolver to indicate you want to also send the output of the resolver to hasura-csvs person-csv, i use CSV (this can be the same for every table if you want)   
 
-![Screenshot](./assets/screenshot.png)
+![Screenshot](./assets/Screenshot.png)
 
 Now to output to hasura-csv simply add the CSV field to the resolver you have linked it to in a UI query, for example:
 
