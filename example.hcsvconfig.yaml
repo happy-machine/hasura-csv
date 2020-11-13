@@ -1,12 +1,12 @@
 resolvers:
-  - name: person-csv
+  - name: person_csv
     resolver_target: csv
     fields:
       - arg: age
         type: integer
       - arg: name
         type: string
-  - name: giraffe-csv
+  - name: giraffe_csv
     resolver_target: csv
     fields:
       - arg: eye_colour
